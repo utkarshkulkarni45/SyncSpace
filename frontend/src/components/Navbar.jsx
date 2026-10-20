@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, Code, Copy, Check, Sparkles } from 'lucide-react';
+import { Users, Code, Copy, Check, Heart } from 'lucide-react';
 
 export default function Navbar({ room, users = [], onCopyLink, copied }) {
   return (
@@ -21,6 +21,14 @@ export default function Navbar({ room, users = [], onCopyLink, copied }) {
       </div>
 
       <div className="flex items-center gap-4">
+        {/* Golden Watermark Pill */}
+        <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-[11px] font-semibold text-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.25)] select-none">
+          <span>Made with</span>
+          <Heart className="w-3 h-3 fill-amber-400 text-amber-400 animate-pulse" />
+          <span>by</span>
+          <span className="font-bold text-amber-300">UK</span>
+        </div>
+
         {/* Active Connected Avatars */}
         <div className="flex items-center gap-1.5 bg-slate-800/60 px-3 py-1 rounded-full border border-slate-700/50">
           <Users className="w-4 h-4 text-emerald-400 animate-pulse mr-1" />
@@ -64,4 +72,3 @@ export default function Navbar({ room, users = [], onCopyLink, copied }) {
     </header>
   );
 }
-

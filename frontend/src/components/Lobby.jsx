@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, ArrowRight, Code, Sparkles } from 'lucide-react';
+import { Plus, ArrowRight, Code, Sparkles, Heart } from 'lucide-react';
 
 export default function Lobby({ onCreateRoom, onJoinRoom }) {
   const [roomName, setRoomName] = useState('');
@@ -20,12 +20,12 @@ export default function Lobby({ onCreateRoom, onJoinRoom }) {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-6 select-none relative overflow-hidden">
+    <div className="min-h-screen w-full bg-slate-950 flex flex-col items-center justify-center p-6 select-none relative overflow-y-auto">
       {/* Background glowing gradients */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-md w-full space-y-6 z-10">
+      <div className="max-w-md w-full space-y-6 z-10 my-auto">
         <div className="text-center space-y-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold">
             <Sparkles className="w-3.5 h-3.5" />
@@ -130,7 +130,14 @@ export default function Lobby({ onCreateRoom, onJoinRoom }) {
           </form>
         </div>
       </div>
+
+      {/* Golden Watermark */}
+      <footer className="z-10 py-4 mt-6 flex items-center gap-1.5 text-xs font-medium tracking-wide text-amber-400/90 drop-shadow-[0_0_10px_rgba(251,191,36,0.25)] select-none">
+        <span>Made with</span>
+        <Heart className="w-3.5 h-3.5 fill-amber-400 text-amber-400 animate-pulse inline" />
+        <span>by</span>
+        <span className="font-bold text-amber-300 tracking-wider">UK</span>
+      </footer>
     </div>
   );
 }
-
