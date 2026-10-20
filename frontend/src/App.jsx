@@ -11,6 +11,8 @@ const USER_COLORS = [
   '#06b6d4', '#14b8a6', '#10b981', '#f59e0b'
 ];
 
+const API_BASE = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
+
 function getRandomColor() {
   return USER_COLORS[Math.floor(Math.random() * USER_COLORS.length)];
 }
@@ -29,7 +31,7 @@ export default function App() {
 
   const handleCreateRoom = async ({ name, language, username }) => {
     try {
-      const res = await fetch('/api/rooms', {
+      const res = await fetch(`${API_BASE}/api/rooms`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, language })
@@ -38,13 +40,13 @@ export default function App() {
       joinActiveRoom(data, username);
     } catch (err) {
       console.error('Error creating room:', err);
-      alert('Could not create room. Ensure backend server is running on port 8080.');
+      alert('Could not create room. Ensure backend server is running.');
     }
   };
 
   const handleJoinRoom = async ({ roomId, username }) => {
     try {
-      const res = await fetch(`/api/rooms/${roomId}`);
+      const res = await fetch(`${API_BASE}/api/rooms/${roomId}`);
       if (!res.ok) {
         alert('Room not found. Check the ID and try again.');
         return;
@@ -123,7 +125,7 @@ export default function App() {
 
   const fetchSnapshots = async (roomId) => {
     try {
-      const res = await fetch(`/api/rooms/${roomId}/snapshots`);
+      const res = await fetch(`${API_BASE}/api/rooms/${roomId}/snapshots`);
       if (res.ok) {
         const data = await res.json();
         setSnapshots(data);
@@ -178,7 +180,7 @@ export default function App() {
   const handleSaveSnapshot = async () => {
     if (!room || !currentUser) return;
     try {
-      const res = await fetch(`/api/rooms/${room.id}/snapshots`, {
+      const res = await fetch(`${API_BASE}/api/rooms/${room.id}/snapshots`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

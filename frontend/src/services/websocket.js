@@ -14,7 +14,8 @@ class WebSocketService {
       return;
     }
 
-    const socketUrl = window.location.port === '5173' ? 'http://localhost:8080/ws' : '/ws';
+    const apiUrl = import.meta.env.VITE_API_URL || '';
+    const socketUrl = apiUrl ? `${apiUrl.replace(/\/$/, '')}/ws` : (window.location.port === '5173' ? 'http://localhost:8080/ws' : '/ws');
 
     this.client = new Client({
       webSocketFactory: () => new SockJS(socketUrl),

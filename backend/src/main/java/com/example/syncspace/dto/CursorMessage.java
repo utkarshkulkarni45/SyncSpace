@@ -8,3 +8,4 @@ public record CursorMessage(
         int lineNumber,
         int column
 ) {}
+

@@ -8,3 +8,4 @@ public record ChatMessage(
         String color,
         Long timestamp
 ) {}
+

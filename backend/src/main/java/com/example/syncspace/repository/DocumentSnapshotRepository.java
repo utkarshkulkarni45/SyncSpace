@@ -10,3 +10,4 @@ import java.util.List;
 public interface DocumentSnapshotRepository extends JpaRepository<DocumentSnapshot, Long> {
     List<DocumentSnapshot> findByRoomIdOrderBySavedAtDesc(String roomId);
 }
+

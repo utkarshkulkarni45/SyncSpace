@@ -59,3 +59,4 @@ public class RoomRestController {
         return ResponseEntity.ok(roomService.getSnapshots(roomId));
     }
 }
+

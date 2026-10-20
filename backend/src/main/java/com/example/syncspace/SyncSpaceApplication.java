@@ -10,3 +10,4 @@ public class SyncSpaceApplication {
         SpringApplication.run(SyncSpaceApplication.class, args);
     }
 }
+

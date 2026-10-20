@@ -1,0 +1,29 @@
+services:
+  # Backend Spring Boot Web Service
+  - type: web
+    name: syncspace-backend
+    env: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    region: oregon
+    healthCheckPath: /api/rooms
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: syncspace-db
+          property: connectionString
+      - key: SPRING_REDIS_HOST
+        value: "" # Optional, or set to Upstash / Render Redis host
+      - key: SPRING_REDIS_PORT
+        value: "6379"
+
+  # PostgreSQL Database Instance
+databases:
+  - name: syncspace-db
+    plan: free
+    region: oregon
+    databaseName: syncspacedb
+    user: syncspace_user

@@ -64,3 +64,4 @@ export default function Navbar({ room, users = [], onCopyLink, copied }) {
     </header>
   );
 }
+

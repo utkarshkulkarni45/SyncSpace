@@ -12,3 +12,4 @@ public record CreateRoomRequest(
 
         String initialContent
 ) {}
+

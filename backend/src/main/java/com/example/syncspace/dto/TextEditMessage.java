@@ -8,3 +8,4 @@ public record TextEditMessage(
         Long version,
         Long timestamp
 ) {}
+

@@ -10,3 +10,4 @@ public record RoomResponse(
         LocalDateTime createdAt,
         LocalDateTime updatedAt
 ) {}
+
