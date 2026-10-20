@@ -15,8 +15,16 @@ services:
         fromDatabase:
           name: syncspace-db
           property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: syncspace-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: syncspace-db
+          property: password
       - key: SPRING_REDIS_HOST
-        value: "" # Optional, or set to Upstash / Render Redis host
+        value: "" # Optional, in-memory presence fallback is used
       - key: SPRING_REDIS_PORT
         value: "6379"
 
