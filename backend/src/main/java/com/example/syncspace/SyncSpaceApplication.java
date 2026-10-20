@@ -2,12 +2,16 @@ package com.example.syncspace;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
+import org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = {
+        RedisAutoConfiguration.class,
+        RedisRepositoriesAutoConfiguration.class
+})
 public class SyncSpaceApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SyncSpaceApplication.class, args);
     }
 }
-
