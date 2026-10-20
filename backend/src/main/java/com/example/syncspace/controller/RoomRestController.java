@@ -27,6 +27,14 @@ public class RoomRestController {
         this.presenceService = presenceService;
     }
 
+    /**
+     * Health check endpoint used by Render and cloud load balancers.
+     */
+    @GetMapping
+    public ResponseEntity<Map<String, String>> healthCheck() {
+        return ResponseEntity.ok(Map.of("status", "UP", "service", "SyncSpace Backend"));
+    }
+
     @PostMapping
     public ResponseEntity<RoomResponse> createRoom(@Valid @RequestBody CreateRoomRequest request) {
         RoomResponse created = roomService.createRoom(request);
@@ -59,4 +67,3 @@ public class RoomRestController {
         return ResponseEntity.ok(roomService.getSnapshots(roomId));
     }
 }
-
